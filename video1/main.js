@@ -102,11 +102,11 @@ console.log(`${i} is even`);
 
 // Write a program that plays "neither yes, nor no" with the user. Specifically, the programs asks the user to enter text until either "yes" or "no" is typed, which ends the game.
 
-let userWord = ''
+// let userWord = ''
 
-while (userWord !=='yes' && userWord !== 'no'){
-  userWord = prompt('Enter a word').toLowerCase()
-}
+// while (userWord !=='yes' && userWord !== 'no'){
+//   userWord = prompt('Enter a word').toLowerCase()
+// }
 
 // 6. FizzBuzz
 
@@ -128,3 +128,39 @@ while (userWord !=='yes' && userWord !== 'no'){
 //     console.log(`${i} Fizz`)
 //   }
 // }
+
+// ====== Shortening codiitional statements ======//
+
+// let word = prompt('please insert something')
+
+
+// Long version 
+
+// if (word =='hello there!'){
+//   console.log('Hello to you too!')
+// }else {
+//   console.log('sorry wrong person')
+// }
+
+//======Shortened verson ======//
+
+// Ternary expression//
+
+// word == 'hello there!' ? console.log('Hello to you too!') : console.log('sorry wrong person')
+
+
+
+
+// for (let i = 1; i <= 10; i++) {
+//   if (i % 2 === 0) {
+//   console.log(`${i} is even`);
+//   }else {
+//     console.log('odd')
+//   }
+// }
+
+
+for (let i = 1; i <= 10; i++) {
+
+i % 2 === 0 ? console.log(`${i} is even`) : console.log(`${i} is odd`)
+}
