@@ -105,37 +105,255 @@
 
 
 
-function Calculator() {
+// function Calculator() {
 
-    this.methods = {
-      "-": (a, b) => a - b,
-      "+": (a, b) => a + b
-    };
+//     this.methods = {
+//       "-": (a, b) => a - b,
+//       "+": (a, b) => a + b
+//     };
   
-    this.calculate = function(str) {
+//     this.calculate = function(str) {
   
-      let split = str.split(' '),
-        a = +split[0],
-        op = split[1],
-        b = +split[2];
+//       let split = str.split(' '),
+//         a = +split[0],
+//         op = split[1],
+//         b = +split[2];
   
-      if (!this.methods[op] || isNaN(a) || isNaN(b)) {
-        return NaN;
-      }
+//       if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+//         return NaN;
+//       }
   
-      return this.methods[op](a, b);
-    };
+//       return this.methods[op](a, b);
+//     };
   
-    this.addMethod = function(name, func) {
-      this.methods[name] = func;
-    };
-  }
+//     this.addMethod = function(name, func) {
+//       this.methods[name] = func;
+//     };
+//   }
 
-let powerCalc = new Calculator;
-powerCalc.addMethod("*", (a, b) => a * b);
-powerCalc.addMethod("/", (a, b) => a / b);
-powerCalc.addMethod("**", (a, b) => a ** b);
+// let powerCalc = new Calculator;
+// powerCalc.addMethod("*", (a, b) => a * b);
+// powerCalc.addMethod("/", (a, b) => a / b);
+// powerCalc.addMethod("**", (a, b) => a ** b);
 
-let result = powerCalc.calculate('3 + 6')
-console.log(result)
+// // console.log(powerCalc.methods)
+
+
+// let result = powerCalc.calculate('3 + 6')
+// console.log(result)
+
+// 7. Map to names
+
+// You have an array of user objects, each one has user.name. Write the code that converts it into an array of names.
+
+// let john = { name: "John", age: 25 };
+// let pete = { name: "Pete", age: 30 };
+// let mary = { name: "Mary", age: 28 };
+
+// let users = [ john, pete, mary ];
+
+
+// let names = users.map(item => `My name is ${item.name} and I'm ${item.age} years old`)
+
+
+// // let names = users.map(item => item.name)
+
+// console.log( names ); // John, Pete, Mary
+
+// 8. Map to objects
+// importance: 5
+// You have an array of user objects, each one has name, surname and id.
+
+// Write the code to create another array from it, of objects with id and fullName, where fullName is generated from name and surname.
+
+// let john = { name: "John", surname: "Smith", id: 1 };
+// let pete = { name: "Pete", surname: "Hunt", id: 2 };
+// let mary = { name: "Mary", surname: "Key", id: 3 };
+
+// let users = [ john, pete, mary ];
+
+// let usersMapped = users.map (user => ({
+//   fullName: `${user.name} ${user.surname}`, id: user.id
+// }))
+
+// /*
+// usersMapped = [
+//   { fullName: "John Smith", id: 1 },
+//   { fullName: "Pete Hunt", id: 2 },
+//   { fullName: "Mary Key", id: 3 }
+// ]
+// */
+
+// // console.log(usersMapped)
+
+// console.log( usersMapped[0].id ) // 1
+// console.log( usersMapped[0].fullName ) // John Smith
+
+
+// 9. Sort users by age
+
+// Write the function sortByAge(users) that gets an array of objects with the age property and sorts them by age.
+
+
+// let john = { name: "John", age: 25 };
+// let pete = { name: "Pete", age: 30 };
+// let mary = { name: "Mary", age: 28 };
+// let frank = {name: "Frank", age: 69 };
+
+// let arr = [ pete, john, mary, frank ];
+
+// function sortByAge (arr){
+//   arr.sort((a,b)=> a.age-b.age)
+// }
+
+// sortByAge(arr)
+
+//Arrow function 
+// let sortByAge = arr => arr.sort((a,b)=> a-b)
+
+// // now: [john, mary, pete]
+// console.log(arr[0].name); // John
+// console.log(arr[1].name); // Mary
+// console.log(arr[2].name); // Pete
+// console.log(arr[3].name);
+
+
+
+// 10. Shuffle an array
+// Write the function shuffle(array) that shuffles (randomly reorders) elements of the array.
+
+// Multiple runs of shuffle may lead to different orders of elements. For instance:
+
+// let arr = [1, 2, 3];
+
+
+
+// console.log(shuffle(arr));
+// // arr = [3, 2, 1]
+
+// shuffle(arr);
+// // arr = [2, 1, 3]
+
+// shuffle(arr);
+// // arr = [3, 1, 2]
+// // ...
+
+//Fisher Yates method is the best way to truly randomize an array
+
+// function shuffle(array){
+//  for (let i = array.length-1; i > 0; i-- ){
+//    let j = Math.floor(Math.random()* (i + 1));
+//    [array[i], array[j]] = [array[j], array[i]];
+//  }
+// }
+
+// 11. Get average age
+// Write the function getAverageAge(users) that gets an array of objects with property age and returns the average age.
+
+// The formula for the average is (age1 + age2 + ... + ageN) / N.
+
+// let john = { name: "John", age: 25 };
+// let pete = { name: "Pete", age: 30 };
+// let mary = { name: "Mary", age: 29 };
+
+// let arr = [ john, pete, mary ];
+
+// function getAverageAge(users){
+//   return users.reduce((prev, user)=> prev + user.age, 0 ) / users.length
+// }
+
+// console.log( getAverageAge(arr) ); // (25 + 30 + 29) / 3 = 28
+
+// 12. Filter unique array members
+// Let arr be an array.
+
+// Create a function unique(arr) that should return an array with unique items of arr.
+
+
+// function unique(arr) {
+//   let result =[]
+
+//   for (let str of arr){
+//     if(!result.includes(str)) {
+//       result.push(str)
+//     }
+//   }
+
+//   return result;
+
+// }
+
+// let strings = ["Hare", "Krishna", "Hare", "Krishna",
+//   "Krishna", "Krishna", "Hare", "Hare", ":-O"
+// ];
+
+// console.log( unique(strings) ); // Hare, Krishna, :-O
+
+
+// 13. Create keyed object from array
+// importance: 4
+// Let’s say we received an array of users in the form {id:..., name:..., age:... }.
+
+// Create a function groupById(arr) that creates an object from it, with id as the key, and array items as values.
+
+
+// let users = [
+//   {id: 'john', name: "John Smith", age: 20},
+//   {id: 'ann', name: "Ann Smith", age: 24},
+//   {id: 'pete', name: "Pete Peterson", age: 31},
+// ];
+
+
+
+
+// let usersById = groupById(users);
+
+
+// function groupById(array){
+//   return array.reduce((obj, value) => {
+//     obj[value.id] = value;
+//     return obj
+//   }, {})
+// }
+
+// console.log(usersById)
+
+// after the call we should have:
+
+// usersById = {
+//   john: {id: 'john', name: "John Smith", age: 20},
+//   ann: {id: 'ann', name: "Ann Smith", age: 24},
+//   pete: {id: 'pete', name: "Pete Peterson", age: 31},
+// }
+
+// Such function is really handy when working with server data.
+
+// In this task we assume that id is unique. There may be no two array items with the same id.
+
+// Please use array .reduce method in the solution.
+
+
+// Alternative method to solving problem//
+
+// let users = [
+//   {id: 'john', name: "John Smith", age: 20},
+//   {id: 'ann', name: "Ann Smith", age: 24},
+//   {id: 'pete', name: "Pete Peterson", age: 31},
+// ];
+
+
+// let usersById = groupById(users);
+
+
+// function groupById(array){
+//   let result = {}
+//   array.forEach((item) => result [item.id] = item)
+//   return result;
+// }
+
+
+
+
+// console.log(usersById)
+
 
